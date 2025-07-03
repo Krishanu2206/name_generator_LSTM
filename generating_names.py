@@ -109,6 +109,7 @@ class Generator(): ##to generate some txt randomly
             target = target.to(device)
 
             for c in range(self.chunk_len): #so for 250 iterations its going to predict 250 characters
+                print(inp[:, c])
                 output, (hidden, cell) = self.rnn(inp[:, c], hidden, cell) ##passing a character as the input with the hidden and cell
                 loss += criterion(output, target[:, c]) ##output -> predicting the next_character
 
@@ -129,4 +130,5 @@ class Generator(): ##to generate some txt randomly
 
 gennames = Generator()
 gennames.train()
+            
             
